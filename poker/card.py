@@ -6,8 +6,10 @@ class Card():
              "Jack", "Queen", "King", "Ace")
 
     def __init__(self, rank, suit):
+
         if rank not in self.RANKS:
             raise ValueError(f"Invalid rank. Rank must be one of the following : {self.RANKS}")
+            
         if suit not in self.SUITS:
             raise ValueError(f"Invalid suit. Suit must be one of the following : {self.SUITS}")
         self.rank = rank
