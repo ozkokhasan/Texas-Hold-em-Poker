@@ -8,6 +8,7 @@ class Hand():
     @property
     def _rank_validations_from_best_to_worst(self):
         return (
+            ("Flush", self._flush),
             ("Straight", self._straight),
             ("Three of a Kind", self._three_of_a_kind),
             ("Two Pair", self._two_pair),
@@ -19,6 +20,15 @@ class Hand():
             name, validator_method = rank
             if validator_method():
                 return name
+
+    def _flush(self):
+        suits_that_occurs_5_or_more_times = {
+            suit: suit_count
+            for suit, suit_count in self._card_suit_counts.items()
+            if suit_count >= 5
+        }
+        return len(suits_that_occurs_5_or_more_times) == 1
+
     def _straight(self):
         if len(self.cards) < 5:
             return False
@@ -46,6 +56,15 @@ class Hand():
             for rank, rank_count in self._card_rank_counts.items()
             if rank_count == count
         }
+
+    @property
+    def _card_suit_counts(self):
+        card_suit_counts = {}
+        for card in self.cards:
+            card_suit_counts.setdefault(card.suit, 0)
+            card_suit_counts[card.suit] += 1
+        return card_suit_counts
+
     @property
     def _card_rank_counts(self):
         card_rank_counts = {}
