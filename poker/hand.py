@@ -1,11 +1,14 @@
 class Hand():
 
     def __init__(self, cards):
-        self.cards = cards
+        copy = cards[:]
+        copy.sort()
+        self.cards = copy
 
     @property
     def _rank_validations_from_best_to_worst(self):
         return (
+            ("Straight", self._straight),
             ("Three of a Kind", self._three_of_a_kind),
             ("Two Pair", self._two_pair),
             ("Pair", self._pair),
@@ -16,20 +19,12 @@ class Hand():
             name, validator_method = rank
             if validator_method():
                 return name
+    def _straight(self):
+        if len(self.cards) < 5:
+            return False
+        rank_indexes = [card.rank_index for card in self.cards]
+        return rank_indexes == list(range(rank_indexes[0], (rank_indexes[-1] + 1)))
 
-        # ranks_with_three_of_kind = self._ranks_with_count(3)
-        # if len(ranks_with_three_of_kind) == 1:
-        #     return "Three of a Kind"
-
-        # ranks_with_pairs = self._ranks_with_count(2)
-        # if len(ranks_with_pairs) == 2:
-        #     return "Two Pair"
-
-        # if len(ranks_with_pairs) == 1:
-        #     return "Pair"
-
-        # return "High Card"
-    
     def _three_of_a_kind(self):
         ranks_with_three_of_kind = self._ranks_with_count(3)
         return len(ranks_with_three_of_kind) == 1
