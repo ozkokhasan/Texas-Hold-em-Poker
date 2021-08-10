@@ -10,6 +10,10 @@ class CardTest(unittest.TestCase):
         card = Card(rank = "2", suit = "Clubs")
         self.assertEqual(card.suit, "Clubs")
 
+    def test_card_knows_its_rank_index(self):
+        card = Card(rank = "Jack", suit = "Hearts")
+        self.assertEqual(card.rank_index, 9)
+        
     def test_card_has_string_representation_with_rank_and_suit(self):
         card = Card("5", "Diamonds")
         self.assertEqual(str(card), "5 of Diamonds")
@@ -57,4 +61,32 @@ class CardTest(unittest.TestCase):
         self.assertEqual(
             Card(rank = "2", suit = "Hearts"),
             Card(rank = "2", suit = "Hearts")
+        )
+    
+    def test_sorts_cards(self):
+        two_of_spades = Card(rank = "2", suit = "Spades")
+        five_of_diamonds = Card(rank = "5", suit = "Diamonds")
+        five_of_hearts = Card(rank = "5", suit = "Hearts")
+        eight_of_clubs = Card(rank = "8", suit = "Clubs")
+        ace_of_clubs = Card(rank = "Ace", suit = "Clubs")
+
+        cards = [
+            five_of_diamonds,
+            two_of_spades,
+            five_of_hearts,
+            ace_of_clubs,
+            eight_of_clubs
+        ]
+
+        cards.sort()
+
+        self.assertEqual(
+            cards,
+            [
+                two_of_spades,
+                five_of_diamonds,
+                five_of_hearts,
+                eight_of_clubs,
+                ace_of_clubs
+            ]
         )
