@@ -35,3 +35,21 @@ class DeckTest(unittest.TestCase):
         deck.shuffle()
 
         mock_shuffle.assert_called_once_with(cards)
+    
+    def test_removes_specified_number_of_card_from_deck(self):
+        ace = Card(rank = "Ace", suit = "Spades")
+        eight = Card(rank = "8", suit = "Diamonds")
+        cards = [ace, eight]
+
+        deck = Deck()
+        deck.add_cards(cards)
+
+        self.assertEqual(
+            deck.remove_cards(1),
+            [ace]
+        )
+
+        self.assertEqual(
+            deck.cards,
+            [eight]
+        )
