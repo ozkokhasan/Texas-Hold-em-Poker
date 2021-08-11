@@ -7,8 +7,8 @@ deck = Deck()
 cards = Card.create_standart_52_cards()
 deck.add_cards(cards)
 
-hand1 = Hand(cards = [])
-hand2 = Hand(cards = [])
+hand1 = Hand()
+hand2 = Hand()
 
 player1 = Player(name = "Hasan", hand = hand1)
 player2 = Player(name = "Kadir", hand = hand2)
