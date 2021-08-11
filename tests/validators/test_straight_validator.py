@@ -1,8 +1,7 @@
-from poker.validators.straight_validator import StraightValidator
 import unittest
 
 from poker.card import Card
-from poker.validators import TwoPairValidator
+from poker.validators.straight_validator import StraightValidator
 
 class TwoPairValidatorTest(unittest.TestCase):
     def test_does_not_deem_two_consecutive_cards_as_straight(self):
