@@ -17,4 +17,10 @@ players = [player1, player2]
 
 game_round = GameRound(deck = deck, players = players)
 game_round.play()
+
+print(player1.hand)
+print(player1.best_hand())
+print(player2.hand)
+print(player2.best_hand())
+
 # from main import deck, cards, hand1, hand2, player1, player2, game_round

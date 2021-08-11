@@ -8,7 +8,7 @@ class RoyalFlushValidator():
     def is_valid(self):
         if StraightFlushValidator(cards = self.cards).is_valid():
             card = StraightFlushValidator(cards = self.cards).valid_cards()
-            if card[-1] == "Ace":
+            if card[-1].rank == "Ace":
                 return True
         return False
 

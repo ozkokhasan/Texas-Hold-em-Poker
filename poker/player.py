@@ -3,6 +3,9 @@ class Player():
         self.name = name
         self.hand = hand
     
+    def __gt__(self, other):
+        return self.best_hand()[0] < other.best_hand()[0]
+
     def best_hand(self):
         return self.hand.best_rank()
     
