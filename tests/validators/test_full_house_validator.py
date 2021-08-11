@@ -1,5 +1,4 @@
 import unittest
-from poker import validators
 
 from poker.card import Card
 from poker.validators import FullHouseValidator

@@ -39,24 +39,7 @@ class HandTest(unittest.TestCase):
             ace_of_spades
             ]
         )
-      
-    def test_figures_out_straight_flush_is_the_best_hand(self):
-        cards = [
-            Card(rank = "3", suit = "Clubs"),
-            Card(rank = "4", suit = "Clubs"),
-            Card(rank = "5", suit = "Clubs"),
-            Card(rank = "6", suit = "Clubs"),
-            Card(rank = "7", suit = "Clubs"),
-        ]
-
-        hand = Hand()
-        hand.add_cards(cards)
-
-        self.assertEqual(
-            hand.best_rank(),
-            "Straight Flush"
-        )
-    
+        
     def test_figures_out_royal_flush_is_the_best_hand(self):
         cards = [
             Card(rank = "10", suit = "Clubs"),
