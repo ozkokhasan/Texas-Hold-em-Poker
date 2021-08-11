@@ -5,6 +5,18 @@ from poker.card import Card
 from poker.validators import TwoPairValidator
 
 class TwoPairValidatorTest(unittest.TestCase):
+    def test_does_not_deem_two_consecutive_cards_as_straight(self):
+        cards = [
+            Card(rank = "6", suit = "Hearts"),
+            Card(rank = "7", suit = "Diamonds")
+        ]
+
+        validator = StraightValidator(cards = cards)
+
+        self.assertEqual(
+            validator.is_valid(),
+            False
+        )
     def test_determines_if_there_are_five_cards_in_row(self):
         two = Card(rank = "2", suit = "Spades")
         four = Card(rank = "4", suit = "Clubs")
